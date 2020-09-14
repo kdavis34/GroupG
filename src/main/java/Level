@@ -1,0 +1,15 @@
+//package unkown;
+import java.util.Timer;
+
+public class Level {
+	//class variables
+	int level;		//this # is the level's difficulty
+	int matWidth; 	//this is the x-value for the matrix
+	int matHeight;	//this is the y-value for the matrix
+	
+	Timer timer = new Timer();	//this is the variable for the timer for each level
+	
+	public Level() {
+		
+	}
+}
