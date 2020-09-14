@@ -20,9 +20,22 @@ public class Level {
 			}
 		}
 		
+		//perhaps for above this could be moved to determineMatrixSize? or in its own method called createMatrix
+		
 		//calls on function that notes where words share letters
 			//aka determines on what letter the words cross
 		
 		//calls on GUI to display img
 	}
+	
+	private determineMatrixSize(matWidth, matHeight) {
+		matWidth = this.matWidth;
+		matHeight = this.matHeight;
+		
+		
+	}
+	
+	//public getDetMatSize() {
+	//	return; 
+	//}
 }
