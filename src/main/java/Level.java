@@ -46,6 +46,12 @@ public class Level {
 			matWidth = (int)(Math.random() * ((12-9)+1)) + 9;		//matWidth
 			matHeight = matWidth;								//matHeight
 		}
+		/*
+		int x = 5;
+		level - x = y;								//code for equation to determine larger matrix size
+		matWidth += y;								//as level increases, matrix size increases the same amount
+		matHeight += y;
+		*/
 	}
         /**
          * increase level by one
