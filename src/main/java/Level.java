@@ -29,28 +29,23 @@ public class Level {
          * @param level current level
          * @return array of integer
          */
-	public int[] determineMatrixSize (int level) {
-		int matVals[] = new int[2];									//array to store x and y of matrix size
+	public void determineMatrixSize (int level) {
 		
 		if (level == 1) {
 			//use RNG to generate matrix size from 1x1 to 4x4
-			matVals[0] = (int)(Math.random() * ((4-1)+1)) + 1;		//matWidth
-			matVals[1] = matVals[0];								//matHeight
+			matWidth = (int)(Math.random() * ((4-1)+1)) + 1;		//matWidth
+			matHeight = matWidth;								//matHeight
 		}
 		else if (level == 2) {
 			//use RNG to generate matrix size from 5x5 to 8x8
-			matVals[0] = (int)(Math.random() * ((8-5)+1)) + 5;		//matWidth
-			matVals[1] = matVals[0];								//matHeight
+			matWidth = (int)(Math.random() * ((8-5)+1)) + 5;		//matWidth
+			matHeight = matWidth;								//matHeight
 		}
 		else if (level == 3) {
 			//use RNG to generate matrix size from 9x9 to 12x12
-			matVals[0] = (int)(Math.random() * ((12-9)+1)) + 9;		//matWidth
-			matVals[1] = matVals[0];								//matHeight
+			matWidth = (int)(Math.random() * ((12-9)+1)) + 9;		//matWidth
+			matHeight = matWidth;								//matHeight
 		}
-		
-		return matVals;												//return array of width and height values
-		
-		//maybe returns nothing and instead edits values of matWidth & matHeight?
 	}
         /**
          * increase level by one
