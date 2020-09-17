@@ -32,17 +32,17 @@ public class Level {
 	public void determineMatrixSize (int level) {
 		
 		if (level == 1) {
-			//use RNG to generate matrix size from 1x1 to 4x4
+			//for EASY levels, use RNG to generate matrix size from 1x1 to 4x4
 			matWidth = (int)(Math.random() * ((4-1)+1)) + 1;		//matWidth
 			matHeight = matWidth;								//matHeight
 		}
 		else if (level == 2) {
-			//use RNG to generate matrix size from 5x5 to 8x8
+			//for MEDIUM use RNG to generate matrix size from 5x5 to 8x8
 			matWidth = (int)(Math.random() * ((8-5)+1)) + 5;		//matWidth
 			matHeight = matWidth;								//matHeight
 		}
 		else if (level == 3) {
-			//use RNG to generate matrix size from 9x9 to 12x12
+			//for HARD use RNG to generate matrix size from 9x9 to 12x12
 			matWidth = (int)(Math.random() * ((12-9)+1)) + 9;		//matWidth
 			matHeight = matWidth;								//matHeight
 		}
