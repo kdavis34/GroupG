@@ -1,7 +1,9 @@
 //package unkown;
 import java.util.Timer;
-import java.util.Random;
-/*Level Class to get the Level and Time Duration*/
+import java.util.Random;/**
+ * 
+ * @author jayas
+ */
 public class Level {
 	//class variables
 	int level;		//this # is the level's difficulty (or is it unique ID?)
@@ -9,7 +11,10 @@ public class Level {
 	int matHeight;	//this is the y-value for the matrix
 	
 	Timer timer = new Timer();	//this is the variable/object for the timer for each level
-	
+	/**
+         * constructor 
+         * initialize the values
+         */
 	public Level() {
                 level = 0;
 		//calls method to determine size
@@ -33,6 +38,11 @@ public class Level {
 		//calls on GUI to display img
 	}
 	
+        /**
+         * matrix allocation size based on level
+         * @param level current level
+         * @return array of integer
+         */
 	public int[] determineMatrixSize (int level) {
 		int matVals[] = new int[2];									//array to store x and y of matrix size
 		
@@ -56,14 +66,20 @@ public class Level {
 		
 		//maybe returns nothing and instead edits values of matWidth & matHeight?
 	}
-        //increase level by 1 and return level
+        /**
+         * increase level by one
+         * @return current level
+         */
         public int increaseLevel() {
             //Level Increased
             level++;
             return level;
         }
 
-        //Duration
+        /**
+         * Game Duration play
+         * @return duration time in seconds
+         */
         public int determineTimerDuration() {
             int totalDuration=1200;   //Default duration of the Game
             int durationLevel = 5; // Duration level 5 seconds
