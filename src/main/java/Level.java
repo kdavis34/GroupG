@@ -21,21 +21,7 @@ public class Level {
 		determineMatrixSize(level);
 		
 		//creates matrix array using variables matWidth & matHeight
-		String[][] mArry = new String[matWidth][matHeight];		
-		
-		//with double foreach, adds word string in matrix
-		for (String letter : mArry) {
-			for (String let : letter) {
-				//let = String;
-			}
-		}
-		
-		//perhaps for above this could be its own method called createMatrix?
-		
-		//calls on function that notes where words share letters
-			//aka determines on what letter the words cross
-		
-		//calls on GUI to display img
+		String[][] mArry = new String[matWidth][matHeight];
 	}
 	
         /**
