@@ -9,6 +9,8 @@ public class Level {
 	int level;		//this # is the level's difficulty (or is it unique ID?)
 	int matWidth; 	//this is the x-value for the matrix
 	int matHeight;	//this is the y-value for the matrix
+	int counter = 0;	//this is the counter for the amount of games the player has completed
+				//while not used now, will be used to calculate score later
 	
 	Timer timer = new Timer();	//this is the variable/object for the timer for each level
 	/**
@@ -21,21 +23,7 @@ public class Level {
 		determineMatrixSize(level);
 		
 		//creates matrix array using variables matWidth & matHeight
-		String[][] mArry = new String[matWidth][matHeight];		
-		
-		//with double foreach, adds word string in matrix
-		for (String letter : mArry) {
-			for (String let : letter) {
-				//let = String;
-			}
-		}
-		
-		//perhaps for above this could be its own method called createMatrix?
-		
-		//calls on function that notes where words share letters
-			//aka determines on what letter the words cross
-		
-		//calls on GUI to display img
+		String[][] mArry = new String[matWidth][matHeight];
 	}
 	
         /**
@@ -43,28 +31,19 @@ public class Level {
          * @param level current level
          * @return array of integer
          */
-	public int[] determineMatrixSize (int level) {
-		int matVals[] = new int[2];									//array to store x and y of matrix size
+	public int[][] determineMatrixSize (int level) {
 		
-		if (level == 1) {
-			//use RNG to generate matrix size from 1x1 to 4x4
-			matVals[0] = (int)(Math.random() * ((4-1)+1)) + 1;		//matWidth
-			matVals[1] = matVals[0];								//matHeight
-		}
-		else if (level == 2) {
-			//use RNG to generate matrix size from 5x5 to 8x8
-			matVals[0] = (int)(Math.random() * ((8-5)+1)) + 5;		//matWidth
-			matVals[1] = matVals[0];								//matHeight
-		}
-		else if (level == 3) {
-			//use RNG to generate matrix size from 9x9 to 12x12
-			matVals[0] = (int)(Math.random() * ((12-9)+1)) + 9;		//matWidth
-			matVals[1] = matVals[0];								//matHeight
+		int starting = 5;							//starting matrix size for level 1
+		matWidth = starting;
+		matHeight = starting;
+		int[][] matPuz = new int[matWidth][matHeight];
+		
+		if (level > 1) {							//if the player has completed a game, the matrix will be larger than was previously
+			matWidth++;							//as level increases, matrix size increases the same amount
+			matHeight++;	
 		}
 		
-		return matVals;												//return array of width and height values
-		
-		//maybe returns nothing and instead edits values of matWidth & matHeight?
+		return matPuz[matWidth][matHeight];
 	}
         /**
          * increase level by one
