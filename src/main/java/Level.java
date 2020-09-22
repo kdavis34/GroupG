@@ -81,7 +81,7 @@ public class Level {
          * @return duration time in seconds
          */
         public int determineTimerDuration() {
-            int totalDuration=1200;   //Default duration of the Game
+            int totalDuration=30;   //Default duration of the Game
             int durationLevel = 5; // Duration level 5 seconds
             return totalDuration - (level*durationLevel);
         }
