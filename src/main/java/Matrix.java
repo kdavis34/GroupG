@@ -1,54 +1,55 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Administrator
- */
+import java.util.*;
+        
 public class Matrix {
+    int matrixWidth = 0;
+    int matrixHeight = 0;
+    String word = "";
+    int orientation = 0;
+    int wordLength = 0;
+    String[][] matrix;
+   
     
-    int matrixWidth;
-    int matrixHeight;
-    String word;
-    int orientation ;
-    int wordLength;
-    
-    
-    public Matrix( int x , int y , String w, int o , int wLength) {
-
+    public Matrix( int x , int y , String word, int orientation, int wordLength) {
         this.matrixWidth = x;
         this.matrixHeight = y;
-        this.word = w;
-        this.orientation = o;
-        this.wordLength = wLength; 
-
-}
+        this.word = word;
+        this.orientation = orientation;
+        this.wordLength = wordLength; 
+    }
     
-    public int determineWordLength(int x, int y, int wordLength , int wl[][]) {
-        
-     
-        wl = new int [x][y];
-        
-        
-           for ( int i = 0; i <= wl[x].length; i++ ) {
-              
-              for ( int j = 1; j <= wl[y].length; j++ ) {
-                  
-                  wordLength =  Math.max(x,y); 
-                  
+    public void determineWordLength(int wordLength, int wl[][]) {
+        wl = new int [matrixWidth][matrixHeight];
+           for ( int i = 0; i <= wl[matrixWidth].length; i++ ) {
+              for ( int j = 1; j <= wl[matrixHeight].length; j++ ) {
+                  wordLength =  Math.max(matrixWidth,matrixHeight);   
               }
-          }
+            }
+    }
+        // Randomly determines the orientation of the word in the matrix
+        // 1 = vertical, 0 = horizontal
+        public int determineOrientation() {
+            Random rng = new Random();
+            orientation = rng.nextInt(2);
+            return orientation;
+        }
+        // Generates a matrix based on dimensions and populates each element with a random letter A-Z
+        public void generateMatrix() {
+            Random rng2 = new Random();
+            char letter = 'A';
+            matrix = new String[matrixWidth][matrixHeight];
+            for (int row = 0; row < matrix.length; row++) { // Loops through each element in the matrix
+                for (int col = 0; col < matrix[row].length; col++) {
+                    letter = (char)('A' + rng2.nextInt(26)); // Randomly generates a character between A and Z
+                    matrix[row][col] = String.valueOf(letter); // Converts the character to String and assisgns it to each position in the matrix
+                }
+            }      
+            // Prints matrix
+            /* for (String[] row : matrix) {
+                System.out.println(Arrays.toString(row));
+            } */ 
+        }
         
-           
-    
-        return wordLength;
-
-}
-
-
     
             
 }
+
