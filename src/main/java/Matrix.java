@@ -7,7 +7,7 @@ public class Matrix {
     int orientation = 0;
     int wordLength = 0;
     String[][] matrix;
-    
+   
     
     public Matrix( int x , int y , String word, int orientation, int wordLength) {
         this.matrixWidth = x;
