@@ -9,6 +9,8 @@ public class Level {
 	int level;		//this # is the level's difficulty (or is it unique ID?)
 	int matWidth; 	//this is the x-value for the matrix
 	int matHeight;	//this is the y-value for the matrix
+	int counter = 0;	//this is the counter for the amount of games the player has completed
+				//while not used now, will be used to calculate score later
 	
 	Timer timer = new Timer();	//this is the variable/object for the timer for each level
 	/**
@@ -29,29 +31,19 @@ public class Level {
          * @param level current level
          * @return array of integer
          */
-	public void determineMatrixSize (int level) {
+	public int[][] determineMatrixSize (int level) {
 		
-		if (level == 1) {
-			//for EASY levels, use RNG to generate matrix size from 1x1 to 4x4
-			matWidth = (int)(Math.random() * ((4-1)+1)) + 1;		//matWidth
-			matHeight = matWidth;								//matHeight
+		int starting = 5;							//starting matrix size for level 1
+		matWidth = starting;
+		matHeight = starting;
+		int[][] matPuz = new int[matWidth][matHeight];
+		
+		if (level > 1) {							//if the player has completed a game, the matrix will be larger than was previously
+			matWidth++;							//as level increases, matrix size increases the same amount
+			matHeight++;	
 		}
-		else if (level == 2) {
-			//for MEDIUM use RNG to generate matrix size from 5x5 to 8x8
-			matWidth = (int)(Math.random() * ((8-5)+1)) + 5;		//matWidth
-			matHeight = matWidth;								//matHeight
-		}
-		else if (level == 3) {
-			//for HARD use RNG to generate matrix size from 9x9 to 12x12
-			matWidth = (int)(Math.random() * ((12-9)+1)) + 9;		//matWidth
-			matHeight = matWidth;								//matHeight
-		}
-		/*
-		int x = 5;
-		level - x = y;								//code for equation to determine larger matrix size
-		matWidth += y;								//as level increases, matrix size increases the same amount
-		matHeight += y;
-		*/
+		
+		return matPuz[matWidth][matHeight];
 	}
         /**
          * increase level by one
@@ -68,7 +60,7 @@ public class Level {
          * @return duration time in seconds
          */
         public int determineTimerDuration() {
-            int totalDuration=1200;   //Default duration of the Game
+            int totalDuration=30;   //Default duration of the Game
             int durationLevel = 5; // Duration level 5 seconds
             return totalDuration - (level*durationLevel);
         }

@@ -15,17 +15,15 @@ public class Matrix {
         this.word = word;
         this.orientation = orientation;
         this.wordLength = wordLength; 
-
     }
     
-    public int determineWordLength(int wordLength, int wl[][]) {
+    public void determineWordLength(int wordLength, int wl[][]) {
         wl = new int [matrixWidth][matrixHeight];
            for ( int i = 0; i <= wl[matrixWidth].length; i++ ) {
               for ( int j = 1; j <= wl[matrixHeight].length; j++ ) {
                   wordLength =  Math.max(matrixWidth,matrixHeight);   
               }
             }
-        return wordLength;
     }
         // Randomly determines the orientation of the word in the matrix
         // 1 = vertical, 0 = horizontal
@@ -35,7 +33,7 @@ public class Matrix {
             return orientation;
         }
         // Generates a matrix based on dimensions and populates each element with a random letter A-Z
-        public String[][] generateMatrix() {
+        public void generateMatrix() {
             Random rng2 = new Random();
             char letter = 'A';
             matrix = new String[matrixWidth][matrixHeight];
@@ -49,7 +47,6 @@ public class Matrix {
             /* for (String[] row : matrix) {
                 System.out.println(Arrays.toString(row));
             } */ 
-            return matrix;
         }
         
     
