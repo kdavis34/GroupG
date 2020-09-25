@@ -6,10 +6,9 @@ public class Matrix {
     String word = "";
     int orientation = 0;
     int wordLength = 0;
-    String[][] matrix;
    
     
-    public Matrix( int x , int y , String word, int orientation, int wordLength) {
+    public Matrix(int x, int y, String word, int orientation, int wordLength) {
         this.matrixWidth = x;
         this.matrixHeight = y;
         this.word = word;
@@ -27,16 +26,15 @@ public class Matrix {
     }
         // Randomly determines the orientation of the word in the matrix
         // 1 = vertical, 0 = horizontal
-        public int determineOrientation() {
+        public void determineOrientation() {
             Random rng = new Random();
             orientation = rng.nextInt(2);
-            return orientation;
         }
         // Generates a matrix based on dimensions and populates each element with a random letter A-Z
-        public void generateMatrix() {
+        public String[][] generateMatrix() {
             Random rng2 = new Random();
             char letter = 'A';
-            matrix = new String[matrixWidth][matrixHeight];
+            String[][] matrix = new String[matrixWidth][matrixHeight];
             for (int row = 0; row < matrix.length; row++) { // Loops through each element in the matrix
                 for (int col = 0; col < matrix[row].length; col++) {
                     letter = (char)('A' + rng2.nextInt(26)); // Randomly generates a character between A and Z
@@ -47,6 +45,7 @@ public class Matrix {
             /* for (String[] row : matrix) {
                 System.out.println(Arrays.toString(row));
             } */ 
+            return matrix;
         }
         
     
