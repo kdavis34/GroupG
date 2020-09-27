@@ -22,8 +22,6 @@ public class Level {
 		//calls method to determine size
 		determineMatrixSize(level);
 		
-		//creates matrix array using variables matWidth & matHeight
-		String[][] mArry = new String[matWidth][matHeight];
 	}
 	
         /**
@@ -31,19 +29,14 @@ public class Level {
          * @param level current level
          * @return array of integer
          */
-	public int[][] determineMatrixSize (int level) {
+	public int determineMatrixSize (int level) {
 		
-		int starting = 5;							//starting matrix size for level 1
+		int starting = 4; //starting matrix size for level 0
+                starting = starting + level; // adds the level to the starting array due to it scaling linearly. 
 		matWidth = starting;
 		matHeight = starting;
-		int[][] matPuz = new int[matWidth][matHeight];
-		
-		if (level > 1) {							//if the player has completed a game, the matrix will be larger than was previously
-			matWidth++;							//as level increases, matrix size increases the same amount
-			matHeight++;	
-		}
-		
-		return matPuz[matWidth][matHeight];
+		return matWidth;
+                
 	}
         /**
          * increase level by one
