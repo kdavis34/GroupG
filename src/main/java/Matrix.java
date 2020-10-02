@@ -17,13 +17,8 @@ public class Matrix {
         generateMatrix();
     }
     
-    public void determineWordLength(int wordLength, int wl[][]) {
-        wl = new int [matrixWidth][matrixHeight];
-           for ( int i = 0; i <= wl[matrixWidth].length; i++ ) {
-              for ( int j = 1; j <= wl[matrixHeight].length; j++ ) {
-                  wordLength =  Math.max(matrixWidth,matrixHeight);   
-              }
-            }
+    public int determineWordLength() {
+        return matrixWidth;
     }
         // Randomly determines the orientation of the word in the matrix
         // 1 = vertical, 0 = horizontal
@@ -92,8 +87,4 @@ public class Matrix {
         
         return returnstring;
     }
-    
-    
-            
 }
-
