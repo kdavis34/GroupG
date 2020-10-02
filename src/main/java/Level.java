@@ -1,4 +1,3 @@
-//package unkown;
 import java.util.Timer;
 import java.util.Random;/**
  * 
@@ -20,7 +19,7 @@ public class Level {
 	public Level() {
                 level = 0;
 		//calls method to determine size
-		determineMatrixSize(level);
+		determineMatrixSize();
 		
 	}
 	
@@ -29,10 +28,10 @@ public class Level {
          * @param level current level
          * @return array of integer
          */
-	public int determineMatrixSize (int level) {
+	public int determineMatrixSize () {
 		
 		int starting = 4; //starting matrix size for level 0
-                starting = starting + level; // adds the level to the starting array due to it scaling linearly. 
+                starting = starting + this.level; // adds the level to the starting array due to it scaling linearly. 
 		matWidth = starting;
 		matHeight = starting;
 		return matWidth;
@@ -42,9 +41,12 @@ public class Level {
          * increase level by one
          * @return current level
          */
-        public int increaseLevel() {
+        public void increaseLevel() {
             //Level Increased
             level++;
+        }
+        
+        public int getLevel(){
             return level;
         }
 
