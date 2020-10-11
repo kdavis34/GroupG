@@ -40,5 +40,6 @@ public class WordMatrix {
             Level level = new Level();
             
         }
+
     }
 }
