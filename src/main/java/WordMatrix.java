@@ -2,26 +2,41 @@ public class WordMatrix {
 
     public static void main(String args[]) {
 
-        Level testLevel = new Level();
-        String testWord = "test";
-        System.out.println("Level Class: determineMatrixSize, made to determine the length of the matrix based on the level");
-        System.out.println(testLevel.determineMatrixSize());
-        System.out.println("Level Class: increaseLevel, incremenets the level by one");
-        System.out.println(testLevel.getLevel());
-        testLevel.increaseLevel();
-        System.out.println(testLevel.getLevel());
-        System.out.println("Level Class: determineTimerDuration, made for the timer that will eventually be added to determine the time. Gets smaller as the level increases");
-        System.out.println(testLevel.determineTimerDuration());
+         System.out.println("----------------------------------- WORD MATRIX -----------------------------------");
+        System.out.println();
         
-        System.out.println("Matrix Class: generateMatrix, called when constructed and can be called seperatly to make a new matrix");
-        Matrix testMatrix = new Matrix(testLevel.determineMatrixSize());
-        System.out.println("Matrix Class: toString");
-        System.out.println(testMatrix);
-        System.out.println("Matrix Class: determineMatrixSize, determines the maximum length of the word that can be placed in the matrix");
-        System.out.println(testMatrix.determineWordLength());
-        System.out.println("Matrix Class: placeWordInMatrix, randomly places a word in the matrix with random orientation and stores the word along with its position. The test word is test in lowercase");
-        testMatrix.placeWordInMatrix("test");
-        System.out.println(testMatrix);
+        System.out.println("Word Matrix is a fun and stimulating game that generates a matrix of\n"
+                + "random characters and a pattern hidden with the matrix. It's your job to find\n"
+                + "the pattern and determine its orientation (whether it occurs vertically or\n"
+                + "horizontally) in the least amount of time possible. Upon each increasing level,\n"
+                + "the matrix increases in size making the pattern more and more difficult to find.");
+        System.out.println();
+        System.out.println("------------------------------------------------------------------------------------");
+        System.out.println("                                    How to Play:                                    ");
+        System.out.println("\n1. Find the hidden word within the matrix");
+        System.out.println("2. Enter the starting position of the word. Example: (3,2)");
+        System.out.println("3. Enter the word's orientation:");
+        System.out.println();
+        System.out.println("If your input is correct, you'll advance to the next level "
+                + "and the matrix will increase in size.\nIf it's incorrect, a new matrix of the same"
+                + "size will continue generate until you've successfully entered the correct information.");
+        System.out.println();
+        System.out.println("                                  Got it? Enter \"Y\" to Play!                                    ");
+        System.out.println("------------------------------------------------------------------------------------");
+        Scanner scnr = new Scanner(System.in);
+        char input = scnr.next().charAt(0);
+        if (input == 'N' || input == 'n') {
+           System.out.println("Goodbye!");
+                System.exit(0); 
+        }
+        else while (input != 'Y' || input != 'y') {
+            System.out.println("Invalid Option. Enter \"Y\" to play, else enter \"N\" to exit.");
+            input = scnr.next().charAt(0);
+            if (input == 'N' || input == 'n') {
+                System.out.println("Gone so soon? Goodbye!");
+                System.exit(0);
+            }
+            Level level = new Level();
 
     }
 }
