@@ -1,10 +1,18 @@
-public class WordMatrix {
+
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class WordMatrix extends TimerTask {
+
+   static Level level;
+   static Timer timer;
 
     public static void main(String args[]) {
 
-         System.out.println("----------------------------------- WORD MATRIX -----------------------------------");
+        System.out.println("----------------------------------- WORD MATRIX -----------------------------------");
         System.out.println();
-        
+
         System.out.println("Word Matrix is a fun and stimulating game that generates a matrix of\n"
                 + "random characters and a pattern hidden with the matrix. It's your job to find\n"
                 + "the pattern and determine its orientation (whether it occurs vertically or\n"
@@ -21,22 +29,39 @@ public class WordMatrix {
                 + "and the matrix will increase in size.\nIf it's incorrect, a new matrix of the same"
                 + "size will continue generate until you've successfully entered the correct information.");
         System.out.println();
+        programcontinue();
+    }
+    @Override
+    public  void run() {
+        System.out.println("Your Highest Score" + level.highestScore);
+        programcontinue();
+    }
+
+    public static void programcontinue() {
         System.out.println("                                  Got it? Enter \"Y\" to Play!                                    ");
         System.out.println("------------------------------------------------------------------------------------");
         Scanner scnr = new Scanner(System.in);
         char input = scnr.next().charAt(0);
         if (input == 'N' || input == 'n') {
-           System.out.println("Goodbye!");
-                System.exit(0); 
-        }
-        else while (input != 'Y' || input != 'y') {
-            System.out.println("Invalid Option. Enter \"Y\" to play, else enter \"N\" to exit.");
-            input = scnr.next().charAt(0);
-            if (input == 'N' || input == 'n') {
-                System.out.println("Gone so soon? Goodbye!");
-                System.exit(0);
+            if (level != null) {
+                level.determineHighScore();
+                System.out.println("Your Highest Score" + level.highestScore);
             }
-            Level level = new Level();
+            System.out.println("Goodbye!");
+            System.exit(0);
+        } else {
+            while (input != 'Y' || input != 'y') {
+                System.out.println("Invalid Option. Enter \"Y\" to play, else enter \"N\" to exit.");
+                input = scnr.next().charAt(0);
+                if (input == 'N' || input == 'n') {
+                    System.out.println("Gone so soon? Goodbye!");
+                    System.exit(0);
+                }
+                level = new Level();
+                timer = new Timer();
+                timer.schedule(new WordMatrix(),0, level.determineTimerDuration() * 1000);
+            }
+        }
 
     }
 }

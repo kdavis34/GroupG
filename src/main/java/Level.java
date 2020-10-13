@@ -10,7 +10,7 @@ public class Level {
 	int matHeight;	//this is the y-value for the matrix
 	int counter = 0;	//this is the counter for the amount of games the player has completed
 				//while not used now, will be used to calculate score later
-	
+    	int highestScore = 0;   //Highest score of the match
 	Timer timer = new Timer();	//this is the variable/object for the timer for each level
 	/**
          * constructor 
@@ -59,4 +59,13 @@ public class Level {
             int durationLevel = 5; // Duration level 5 seconds
             return totalDuration - (level*durationLevel);
         }
+/**
+     * determineHighScore method will assign a Game Highest Score
+     */
+    public void determineHighScore() {
+        if (highestScore < level) {
+            highestScore = level;
+        }
+    }
+
 }
