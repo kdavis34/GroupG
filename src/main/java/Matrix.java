@@ -14,20 +14,19 @@ public class Matrix {
     public Matrix (int x){
         this.matrixWidth = x;
         this.matrixHeight = x;
-        generateMatrix();
+        this.wordLength = x-2;
     }
     
-    public int determineWordLength() {
-        return matrixWidth;
-    }
-        // Randomly determines the orientation of the word in the matrix
-        // 1 = vertical, 0 = horizontal
+    // Randomly determines the orientation of the word in the matrix
+    // 1 = vertical, 0 = horizontal
     public void determineOrientation() {
         Random rng = new Random();
         this.orientation = rng.nextInt(2);
     }
-        // Generates a matrix based on dimensions and populates each element with a random letter A-Z
+    
+    // Generates a matrix based on dimensions and populates each element with a random letter A-Z
     public void generateMatrix() {
+        determineOrientation(); // determines word orientation
         Random rng2 = new Random();
         char letter = 'A';
         String[][] matrix = new String[matrixWidth][matrixHeight];
@@ -38,11 +37,22 @@ public class Matrix {
             }
         }
         // Prints matrix
-        /* for (String[] row : matrix) {
+         /*for (String[] row : matrix) {
                 System.out.println(Arrays.toString(row));
             } */
         this.matrixArray = matrix;
+        
+        WordDictionary dictionary = new WordDictionary(wordLength); // Creates dictionary object
+        word = dictionary.getWord(); // Stores word from Dictionary class into variable 
+        placeWordInMatrix(word); // Places word in matrix
+        printMatrix(); // Prints the matrix
     }
+    
+    // Returns word
+    public String getWord() {
+        return word;
+    }
+    
     public void placeWordInMatrix(String word){
         determineOrientation();
         this.wordLength = word.length();
@@ -74,7 +84,7 @@ public class Matrix {
         
     }
     
-    @Override
+    /*@Override
     public String toString(){ // overrided toString to allow for easier printing. Prints the matrix row by row with a space inbetween.
         String returnstring = "";
         
@@ -86,5 +96,13 @@ public class Matrix {
         }
         
         return returnstring;
+    }*/
+    
+    // Prints matrix  y converting elements to strings
+    public void printMatrix() {
+        System.out.println();
+        for (String[] row : this.matrixArray) {
+                System.out.println(Arrays.toString(row));
+            } 
     }
 }
