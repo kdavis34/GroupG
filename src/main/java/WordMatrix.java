@@ -7,14 +7,14 @@ public class WordMatrix {
     static String playerAnswer = ""; // The player's input
     static String answer = ""; // The hidden word in the matrix
     static Timer timer;
-    
+    static Level level; 
     // Executes the program with timer
    public static void run() {
        long start = System.currentTimeMillis();
         long end = start + 30*1000; // 30 seconds * 1000 ms/sec
         System.out.println("\nTimer has Started");
         
-        Level level = new Level();
+        level = new Level();
         level.determineMatrixSize();
         level.createMatrix();
         
@@ -80,6 +80,12 @@ public class WordMatrix {
         System.out.println("If your input is correct, you'll advance to the next level "
                 + "and the matrix will increase in size.\nIf it's incorrect, a new matrix of the same"
                 + "size will continue generate until you've successfully entered the correct information.");
+        if(level!=null){
+             System.out.println("Highest Level: "+level.getHighestLevel());
+        }else{
+            System.out.println("Highest Level: 0");
+        }
+       
         System.out.println();
         System.out.println("                            Got it? Enter \"Y\" to Play!                            ");
         System.out.println("------------------------------------------------------------------------------------");
